@@ -12,7 +12,7 @@ $.ajax({
     gender:  null,
     handicap:  null,
     pageIndex: 1,
-    pageSize:  10000,
+    pageSize:  50000,
     runnerId:  null,
     searchString:  null,
     sortColumn:  'overallTime',
