@@ -6,7 +6,7 @@ document.querySelectorAll('a').forEach(function(val){
     urls.push('http://bases.athle.com/asp.net/competitions.aspx?base=calendrier&id=' + url.split("'")[1])
   }
 })
-// console.log(urls)
+console.log(urls)
 
 // single scrap
 var emails = []
