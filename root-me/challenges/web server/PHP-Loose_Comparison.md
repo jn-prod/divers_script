@@ -14,6 +14,9 @@ $h = md5(input[h])
 on attribuera à input[s] = 0e
 et à input[h] = 240610708 (cette valeur à un hash commenceant par 0e source: https://www.whitehatsec.com/blog/magic-hashes/)
 
+→ on peut vérifier avec https://cryptii.com/pipes/hmac
+
+---
 Hash Type   Hash Length   “Magic” Number / String   Magic Hashe Found By
 md2   32  505144726   0e015339760548602306096794382326  WhiteHat Security, Inc.
 md4   32  48291204  0e266546927425668450445617970135  WhiteHat Security, Inc.
