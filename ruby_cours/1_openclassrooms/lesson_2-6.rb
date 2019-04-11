@@ -1,5 +1,9 @@
 class Eleve
   attr_accessor :nom
+
+  def initialize(nom)
+    @nom = nom
+  end
 end
 
 class Examen
@@ -11,8 +15,7 @@ class Examen
   end
 end
 
-mon_eleve = Eleve.new
-mon_eleve.nom = "Billy"
+mon_eleve = Eleve.new("Billy")
 
 maths = Examen.new("maths", 10)
 philo = Examen.new("philo", 15)
