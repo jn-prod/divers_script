@@ -9,8 +9,20 @@ module Notable
     end
   end
 
+  class Error < Exception # erreur globale
+  end
+
+  class MoyenneError < Error
+    def initialize(msg = "Impossible de calculer une moyenne sans notes")
+      super
+    end
+  end
+
+  class AjoutNoteError < Error
+  end
+
   def ajouteNote(note)
-    raise ArgumentError, "note n'est pas un entier" if !note.respond_to? :to_i
+    raise AjoutNoteError if !note.respond_to? :to_i
     notes << note
   end
 
@@ -24,6 +36,7 @@ module Notable
 
   def moyenne
     somme = 0
+    raise MoyenneError if notes.size == 0
     notes.each do |note|
       somme += note
     end
@@ -101,16 +114,14 @@ puts "#{jean.nom} à #{jean.moyenne}"
 
 prof = Grafikart::Professeur.new
 begin
-  prof.notes = [18,14]
-  prof.ajouteNote([18,14])
-rescue Exception # erreur globale
-  puts "Impossible d'ajouter une note"
-rescue ZeroDivisionError # erreur spécifique division par 0
-  puts "Le professeur n'a pas de note"
+  # prof.notes = [18,14]
+  # prof.ajouteNote([18,14])
+rescue Notable::Error => e
+  puts e.to_s
 ensure
   puts "Salut fin"
 end
-prof.ajouteNote(14)
+# prof.ajouteNote(14)
 
 puts "Le proffesseur à #{prof.moyenne}"
 
