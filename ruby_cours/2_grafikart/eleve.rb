@@ -3,7 +3,14 @@ module Notable
 
   attr_writer :notes
 
+  def self.included(base)
+    def base.test
+      puts "test"
+    end
+  end
+
   def ajouteNote(note)
+    raise ArgumentError, "note n'est pas un entier" if !note.respond_to? :to_i
     notes << note
   end
 
@@ -93,8 +100,18 @@ jean.ajouteNote(14)
 puts "#{jean.nom} à #{jean.moyenne}"
 
 prof = Grafikart::Professeur.new
-prof.notes = [18,14]
-prof.ajouteNote(18)
+begin
+  prof.notes = [18,14]
+  prof.ajouteNote([18,14])
+rescue Exception # erreur globale
+  puts "Impossible d'ajouter une note"
+rescue ZeroDivisionError # erreur spécifique division par 0
+  puts "Le professeur n'a pas de note"
+ensure
+  puts "Salut fin"
+end
 prof.ajouteNote(14)
 
 puts "Le proffesseur à #{prof.moyenne}"
+
+Grafikart::Eleve.test

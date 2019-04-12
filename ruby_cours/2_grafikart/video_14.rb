@@ -1,37 +1,15 @@
 # ___Les modules Mixins
 
-# module Mouvement
-#   def marcher
-#     puts "Je marche"
-#   end
+module A
+	def demo
+		puts demo
+	end
+end
 
-#   def courir
-#    puts "je cours"
-#   end
+class C
+	extend A
+end
 
-#   def nage
-#    puts "je nage"
-#   end
-
-# end
-
-# class Humain
-
-#   include Mouvement
-
-# end
-
-# class Chat
-
-#   include Mouvement
-
-# end
-
-# class Dophin
-
-# end
-
-# Chat.new.marcher
-# Humain.new.courir
-
-# ___partie 2
+c = C.new
+c.extend(A)
+c.demo
