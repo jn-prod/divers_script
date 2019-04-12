@@ -30,4 +30,21 @@
 
 # _
 
-# reprendre à 7min:24s
+def majuscule(nom)
+  if nom.respond_to?(:to_s) # est-ce que je peux convertir mon nom en chaine de caratère
+    nom.to_s.upcase
+  end
+end
+
+def triple(chiffre)
+  if chiffre.respond_to?(:to_f)
+    chiffre.to_f * 3
+  else
+    puts "Erreur"
+  end
+end
+
+puts triple("salut")
+puts triple("1.385")
+puts triple(2)
+puts triple(%w{a b c d})

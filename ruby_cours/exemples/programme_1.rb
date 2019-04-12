@@ -55,7 +55,7 @@ else
       puts "\nWarning : Are you sur ?"
       puts "This will add \".#{chosenExtension}\" to current filenames"
       puts "\nPress ENTER to confirm"
-      getsobj.RenameFiles(chosenExtension)
+      gets obj.RenameFiles(chosenExtension)
       break
     end
   end
