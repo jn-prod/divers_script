@@ -27,6 +27,14 @@ try {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
+        elseif ($_GET['action'] == 'updateComment') {
+            if (isset($_GET['id']) && isset($_GET['id'] > 0)) {
+                updateComment()
+            }
+            else {
+                throw new Exception('Aucun identifiant de commentaire envoyé');
+            }
+        }
     }
     else {
         listPosts();
