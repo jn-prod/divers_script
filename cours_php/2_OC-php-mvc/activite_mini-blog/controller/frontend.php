@@ -37,10 +37,21 @@ function addComment($postId, $author, $comment)
     }
 }
 
-function updateComment()
+function updateComment($commentId)
 {
-    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
-    $comments = $commentManager->getComments($_GET['id']);   
-    
-    require('view/frontend/commentUpdateView.php'); 
+    if (!isset($_POST['comment'])) {
+        $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
+        $comment = $commentManager->getComment($commentId);   
+        
+        require('view/frontend/commentView.php');
+    }
+
+    if (isset($_POST['comment'])) {
+        $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
+
+        $comment = $commentManager->updateComment($commentId, $_POST['comment']); 
+        
+        header('Location: index.php?action=post&id=' . $_GET['post_id']);
+    }
+
 }

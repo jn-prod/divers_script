@@ -23,4 +23,28 @@ class CommentManager extends Manager
 
         return $affectedLines;
     }
+
+    public function getComment($commentId)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT * FROM comments WHERE id = :commentId');
+        $req->execute(array(
+            'commentId'=>$commentId
+        ));
+        $comment = $req->fetch();
+
+        return $comment;
+    }
+
+    public function updateComment($commentId, $newComment)
+    {
+        $db = $this->dbConnect();
+        $comment = $db->prepare('UPDATE comments SET comment = :updated_comment WHERE id = :id');
+        $comment->execute(array(
+            'id' => $commentId,
+            'updated_comment' => $newComment
+        ));
+
+        return $comment;
+    }
 }

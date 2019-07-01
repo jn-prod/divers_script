@@ -27,9 +27,12 @@ try {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
-        elseif ($_GET['action'] == 'updateComment') {
-            if (isset($_GET['id']) && isset($_GET['id'] > 0)) {
-                updateComment()
+        elseif ($_GET['action'] == 'updateComment' || $_POST['action'] == 'updateComment') {
+            if (isset($_GET['id']) && $_GET['id'] > 0 && !isset($_POST['comment'])) {
+                updateComment($_GET['id']);
+            }
+            elseif (isset($_GET['id']) && $_GET['id'] > 0 && isset($_POST['comment'])) {
+                updateComment($_GET['id']);
             }
             else {
                 throw new Exception('Aucun identifiant de commentaire envoyé');
